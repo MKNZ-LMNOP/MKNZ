@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 engine = create_engine(
-        "mssql+pyodbc://@ingrid/recipeDB?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
+        "mssql+pyodbc://********/recipeDB?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
     )
     
 
