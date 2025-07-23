@@ -3,8 +3,14 @@ from sqlalchemy import create_engine, text
 from datetime import datetime
 
 engine = create_engine(
+<<<<<<< HEAD
     "mssql+pyodbc://@ingrid/fridgeDB?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
 )
+=======
+        "mssql+pyodbc://********/recipeDB?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
+    )
+    
+>>>>>>> f26b0abcfdda4098f7f08c6710ba5fe1c0d46a4c
 
 def add_grocery_item(item_name, qty_type, quantity=None):  # Make quantity optional
     date_purchased = datetime.now().strftime('%Y-%m-%d')  # Auto-set today's date
