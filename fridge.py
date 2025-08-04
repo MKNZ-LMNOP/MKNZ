@@ -1,53 +1,42 @@
 import pandas as pd
 from sqlalchemy import create_engine, text
-from datetime import datetime
+from datetime import datetime, date
+from csv import DictWriter
 
-engine = create_engine(
-<<<<<<< HEAD
-    "mssql+pyodbc://@ingrid/fridgeDB?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
-)
-=======
-        "mssql+pyodbc://********/recipeDB?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
-    )
+class Fridge():
+
+    def add_item(n, qty, qty_type, date_purchased=datetime):
+        fields = ['name', 'qty', 'qty_type', 'date_purchased']
+        new_row = {'name': n, 'qty': qty, 'qty_type': qty_type, 'date_purchased': date.today()}
+        with open('stock.csv', 'a', newline='') as f:
+            writer = DictWriter(f, fieldnames=fields)
+            writer.writerow(new_row)
+
+    def remove_item(x):
+        df = pd.read_csv('stock.csv')
+        df = df[df['name'] != x]
+        df.to_csv('stock.csv', index=False)
+
+    def look_inside():
+        return pd.read_csv('stock.csv')
     
->>>>>>> f26b0abcfdda4098f7f08c6710ba5fe1c0d46a4c
-
-def add_grocery_item(item_name, qty_type, quantity=None):  # Make quantity optional
-    date_purchased = datetime.now().strftime('%Y-%m-%d')  # Auto-set today's date
-    
-    new_item = pd.DataFrame({
-        'grocery_item': [item_name],
-        'quantity': [quantity],
-        'qty_type': [qty_type],
-        'date_purchased': [date_purchased]
-        
-
-    })
-    
-    new_item.to_sql(
-        'fridge',
-        engine,
-        schema='dbo',
-        if_exists='append',
-        index=False
-    )
-    
-    print(f"Successfully added '{item_name}' to the fridge!")
-
-def remove_grocery_item():
-    item_name = input("Enter item name to delete: ")
-    with engine.begin() as conn:
-        conn.execute(
-            text("DELETE FROM dbo.fridge WHERE grocery_item = :item"), 
-            {"item": item_name}
-        )
-    print(f"Deleted {item_name} from fridge")
-
-def list_grocery_items():
-    look = pd.read_sql('SELECT * FROM dbo.fridge', engine)
-    print(look)
 
 
 
-list_grocery_items()
+Fridge.add_item('brocolo', 300, 'sprigs')
+
+Fridge.remove_item('brocolo')
+
+print(Fridge.look_inside())
+
+
+
+
+
+
+
+
+
+
+
 
