@@ -26,3 +26,24 @@ and a button which allows you to see some recipes and your stock of food items. 
 
 stock of food.
 
+
+............8/4/2025................
+
+Cleaned up the Fridge function, utilizing python's csv module rather than pandas. The fridge is just too small to warrant it's own SQL database.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
