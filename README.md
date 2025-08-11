@@ -6,7 +6,7 @@ Hello and welcome! This is my Fridgeratr app. Fridgeratr hopes to decrease your 
 
 8/11/2025
 
-I got lost in Tkinter for a second there, but we're back on track. The gui is now semi-functional. I'll work more on the logic in the coming days.
+I got lost in Tkinter for a second there, but we're back on track. Quick_gui is now functional, and regular gui will be my playground for a bit. I'll work more on the logic in the coming days.
 
 
 
