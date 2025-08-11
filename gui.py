@@ -3,6 +3,8 @@ from fridge import Fridge
 from recipe_book import Recipebook
 
 
+root = tk.Tk()
+
 class Index(tk.Frame):
 
     def __init__(self, root):
@@ -10,18 +12,21 @@ class Index(tk.Frame):
         self.headercolor = "#FF00FF"
 
         super().__init__(
-            root,
-            bg=self.backgroundcolor
+            root
             )
         
         self.mainframe = self
-        self.mainframe.pack(fill=tk.BOTH, expand=True)
+        self.mainframe.pack(expand=True)
         self.mainframe.columnconfigure(0, weight=0)
 
-        self.container()
+        self.window_container()
 
-    def container(self):
-
+    def window_container(self):
+        
+        self.window_container_frame = tk.Frame(
+            self.mainframe,
+            bg=self.backgroundcolor
+        )
         self.title_container()
         self.body()
         self.input_box()
@@ -30,14 +35,12 @@ class Index(tk.Frame):
     def title_container(self):
         self.title = tk.Frame(
             self.mainframe,
-            bg=self.headercolor,
-            height=200,
-            width=500
+            bg=self.headercolor
         )
 
         self.title.columnconfigure(0, weight=0)
         self.title.rowconfigure(0, weight=0)
-        self.title.grid(column=0, row=0, sticky="EW")
+        self.title.grid(column=0, row=0, sticky=tk.NSEW)
     
 
     def body(self):
@@ -50,7 +53,7 @@ class Index(tk.Frame):
         pass
     
 
-root = tk.Tk()
+
 root.title('Fridgeratr')
 root.geometry("700x500")
 startup = Index(root)

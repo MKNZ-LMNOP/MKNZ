@@ -30,7 +30,7 @@ def submit_food(): # Submit to the DB
     qt = q_type.get()
     Fridge.add_item(sub, qt, q) 
 
-label = tk.Label(window, text='FRIDGERATR', font='impact, 20')
+label = tk.Label(window, text='FRIDGERATR', font='Arial, 20')
 label.pack()
 
 textboxprompt = tk.Label(window, text="What do you have in your Fridgeratr?", font=('Arial', 10))
